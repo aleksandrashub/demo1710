@@ -1,0 +1,132 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="demo1710.MainWindow"
+        Title="demo1710">
+	<ScrollViewer>
+   <Grid
+	   ColumnDefinitions="400, 300, 100"
+	   RowDefinitions="200, 500">
+	   <StackPanel
+		   Orientation="Horizontal"
+		   Grid.Column="0"
+		   Grid.ColumnSpan="3"
+		   Grid.Row="0">
+		   <StackPanel>
+			   <TextBlock
+				   Text="Сортировка по стоимости">
+				   </TextBlock>
+		   <ComboBox
+			   SelectionChanged="Sort_SelectionChanged"
+			   Name="sort">
+			   <ComboBoxItem >
+				   Стоимость по возрастанию
+				   </ComboBoxItem>
+			   <ComboBoxItem >
+				   Стоимость по убыванию
+			   </ComboBoxItem>
+			   <ComboBoxItem >
+				   Снять сортировку
+			   </ComboBoxItem>
+			   </ComboBox>
+			   <TextBlock
+				  Text="Фильтрация по скидке">
+			   </TextBlock>
+			   <ComboBox
+				   SelectionChanged="Filter_SelectionChanged"
+					Name="filter">
+				   <ComboBoxItem >
+					   Скидка 0-9,99%
+				   </ComboBoxItem>
+				   <ComboBoxItem >
+					   Скидка 10-14,99%
+				   </ComboBoxItem>
+				   <ComboBoxItem >
+					   Скидка >15%
+				   </ComboBoxItem>
+				   <ComboBoxItem >
+					   Все диапазоны
+				   </ComboBoxItem>
+				   </ComboBox>
+			   
+			   </StackPanel>
+		   <StackPanel>
+		   <TextBlock
+				Text="Поисковая строка">
+		   </TextBlock>
+		   <TextBox
+			   Name="search"
+			   KeyUp="TextBox_KeyUp"
+			   Width="250"
+			   Height="30">
+		   </TextBox>
+			   </StackPanel>
+		</StackPanel>
+	   <StackPanel
+		  Grid.Column="0"
+		  Grid.ColumnSpan="3"
+		  Grid.Row="1">
+	   
+		   <ListBox
+			   Height="500"
+			   Width="800"
+			   Name="listPr">
+			   <ListBox.ItemTemplate>
+				   <DataTemplate
+					   x:CompileBindings="False">
+					   <ScrollViewer>
+						<Grid
+							Background="{Binding color}"
+							ColumnDefinitions="200,400,200">
+					   <StackPanel
+						   Grid.Column="0">
+						   <Image
+							   Width="100"
+							   Height="100"
+							 Source="{Binding bitmap}">
+						   </Image>
+					   </StackPanel>
+
+						<StackPanel
+							Orientation="Vertical"
+							Grid.Column="1">
+							<TextBlock
+								Text="{Binding NameProd}">
+								
+							</TextBlock>
+							<TextBlock
+								HorizontalAlignment="Left"
+								Width="300"
+								TextWrapping="Wrap"
+								Text="{Binding Descr}">
+
+							</TextBlock>
+							<TextBlock
+								Text="{Binding IdManufNavigation.Manuf}">
+
+							</TextBlock>
+							</StackPanel>
+							<StackPanel
+								Orientation="Horizontal"
+								Grid.Column="2">
+								<TextBlock
+									Text="Размер скидки: ">
+								</TextBlock>
+								<TextBlock
+									Text="{Binding CurrDisc}">
+								</TextBlock>
+								<TextBlock
+									Text="%">
+								</TextBlock>
+								</StackPanel>
+						</Grid>
+				   </ScrollViewer>
+				   </DataTemplate>
+			   </ListBox.ItemTemplate>
+			   </ListBox>
+		   </StackPanel>
+	   </Grid>
+		</ScrollViewer>
+</Window>
